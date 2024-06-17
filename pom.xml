@@ -7,6 +7,16 @@
   <version>1.0-SNAPSHOT</version>
   <name>hello Maven Webapp</name>
   <url>http://maven.apache.org</url>
+ 
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <sonar.projectKey>java-tomcat-maven-example</sonar.projectKey>
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+    <sonar.login>your_sonarqube_token</sonar.login>
+    <jacoco.version>0.8.7</jacoco.version>
+  </properties>
+ 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,10 +24,41 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- Add other dependencies here if needed -->
   </dependencies>
+ 
   <build>
     <finalName>java-tomcat-maven-example</finalName>
     <plugins>
+      <!-- JaCoCo plugin configuration -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- SonarQube plugin configuration -->
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.0.2155</version>
+      </plugin>
+
+      <!-- Maven dependency plugin configuration -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
