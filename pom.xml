@@ -11,9 +11,6 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <sonar.projectKey>java-tomcat-maven-example</sonar.projectKey>
-    <sonar.host.url>http://localhost:9000</sonar.host.url>
-    <sonar.login>your_sonarqube_token</sonar.login>
     <jacoco.version>0.8.7</jacoco.version>
   </properties>
  
@@ -49,13 +46,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-
-      <!-- SonarQube plugin configuration -->
-      <plugin>
-        <groupId>org.sonarsource.scanner.maven</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.9.0.2155</version>
       </plugin>
 
       <!-- Maven dependency plugin configuration -->
