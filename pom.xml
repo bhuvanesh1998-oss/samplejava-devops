@@ -7,6 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>hello Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -15,9 +16,11 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <finalName>java-tomcat-maven-example</finalName>
     <plugins>
+      <!-- Existing Maven Dependency Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -25,7 +28,9 @@
         <executions>
           <execution>
             <phase>package</phase>
-            <goals><goal>copy</goal></goals>
+            <goals>
+              <goal>copy</goal>
+            </goals>
             <configuration>
               <artifactItems>
                 <artifactItem>
@@ -39,6 +44,14 @@
           </execution>
         </executions>
       </plugin>
+
+      <!-- SonarQube Scanner Plugin -->
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>4.0.0.2929</version> <!-- Explicit version for compatibility -->
+      </plugin>
+
     </plugins>
   </build>
 </project>
